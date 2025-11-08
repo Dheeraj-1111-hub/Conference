@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FileText, CheckCircle, Calendar } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
@@ -54,13 +55,27 @@ const CallForPapers = () => {
     { event: "Conference Dates", date: "March 14–15, 2025", highlight: true },
   ];
 
+  const dateVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.15,
+        duration: 0.6,
+        type: "spring",
+        stiffness: 70,
+      },
+    }),
+  };
+
   return (
     <div className="min-h-screen flex flex-col text-[1.05rem] md:text-base">
       <Navigation />
 
       <main className="flex-1">
-        {/* Page Header */}
-        <section className="bg-gradient-hero text-primary-foreground py-16">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-r from-primary to-blue-500 text-white py-16">
           <div className="container mx-auto px-4 text-center">
             <div className="flex flex-col items-center justify-center mb-4">
               <FileText size={52} />
@@ -78,41 +93,51 @@ const CallForPapers = () => {
         <section className="py-16">
           <div className="container mx-auto px-4 max-w-6xl leading-relaxed">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Left Content */}
+              {/* Left Section */}
               <div className="lg:col-span-2 space-y-12">
                 {/* Scope and Topics */}
                 <div>
-                  <h2 className="text-4xl font-bold text-foreground mb-4 text-center">
+                  <h2 className="text-4xl font-bold text-center mb-4">
                     Scope and Topics
                   </h2>
                   <p className="text-muted-foreground mb-6 text-center">
                     ICETCCT 2025 invites original research papers, review
                     articles, and case studies on topics related to emerging
-                    trends in Computing and Communication Technologies. Papers
-                    should present novel approaches, methodologies, algorithms,
-                    or applications in the following areas (but not limited to):
+                    trends in Computing and Communication Technologies.
                   </p>
-
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {topics.map((topic, index) => (
-                      <div key={index} className="flex items-start gap-2">
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.03, duration: 0.4 }}
+                        viewport={{ once: true }}
+                        className="flex items-start gap-2"
+                      >
                         <CheckCircle
                           size={22}
                           className="text-primary mt-1 flex-shrink-0"
                         />
                         <span className="text-muted-foreground">{topic}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
 
                 {/* Submission Guidelines */}
                 <div>
-                  <h2 className="text-4xl font-bold text-foreground mb-4 text-center">
+                  <h2 className="text-4xl font-bold text-center mb-4">
                     Submission Guidelines
                   </h2>
-                  <div className="space-y-4 text-muted-foreground">
-                    <div>
+
+                  <div className="space-y-6 text-muted-foreground">
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5 }}
+                      viewport={{ once: true }}
+                    >
                       <h3 className="text-2xl font-semibold text-foreground mb-2">
                         Paper Format
                       </h3>
@@ -122,120 +147,145 @@ const CallForPapers = () => {
                           Follow IEEE double-column format (US Letter size)
                         </li>
                         <li>Maximum length: 6 pages (including references)</li>
-                        <li>
-                          Use IEEE conference paper template available on IEEE
-                          website
-                        </li>
+                        <li>Use IEEE conference paper template</li>
                         <li>
                           Papers must be original and not submitted elsewhere
                         </li>
                       </ul>
-                    </div>
+                    </motion.div>
 
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1, duration: 0.5 }}
+                      viewport={{ once: true }}
+                    >
                       <h3 className="text-2xl font-semibold text-foreground mb-2">
                         Review Process
                       </h3>
                       <ul className="list-disc list-inside space-y-2">
+                        <li>All submissions undergo rigorous peer review</li>
+                        <li>Each paper reviewed by at least two experts</li>
                         <li>
-                          All submissions will undergo a rigorous peer-review
-                          process
-                        </li>
-                        <li>
-                          Each paper will be reviewed by at least two experts in
-                          the field
-                        </li>
-                        <li>
-                          Authors will be notified of acceptance/rejection via
-                          email
+                          Authors notified of acceptance/rejection via email
                         </li>
                         <li>
                           Accepted papers must be presented at the conference
                         </li>
                       </ul>
-                    </div>
+                    </motion.div>
 
-                    <div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2, duration: 0.5 }}
+                      viewport={{ once: true }}
+                    >
                       <h3 className="text-2xl font-semibold text-foreground mb-2">
                         Publication
                       </h3>
                       <ul className="list-disc list-inside space-y-2">
                         <li>
-                          Accepted and presented papers will be published in
-                          IEEE Xplore Digital Library
+                          Accepted papers will be published in IEEE Xplore
+                          Digital Library
                         </li>
                         <li>
-                          Selected papers will be considered for publication in
-                          IEEE journals
+                          Selected papers may be considered for IEEE journals
                         </li>
                         <li>
-                          All papers must be presented by at least one
-                          registered author
+                          All papers must be presented by a registered author
                         </li>
                       </ul>
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
 
                 {/* Plagiarism Policy */}
-                <div className="bg-secondary p-6 rounded-lg text-center">
-                  <h3 className="text-2xl font-semibold text-foreground mb-3">
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="bg-secondary p-6 rounded-lg text-center shadow"
+                >
+                  <h3 className="text-2xl font-semibold mb-3">
                     Plagiarism Policy
                   </h3>
                   <p className="text-muted-foreground">
-                    All submitted papers will be checked for plagiarism using
-                    standard tools. Papers found to have significant similarity
-                    with previously published work will be rejected without
-                    review. We expect all authors to follow IEEE's ethical
-                    guidelines for publication.
+                    All submitted papers will be checked for plagiarism. Papers
+                    with significant similarity to published work will be
+                    rejected without review. Please follow IEEE’s ethical
+                    publication guidelines.
                   </p>
-                </div>
+                </motion.div>
 
-                {/* Important Dates Section */}
-                <div className="pt-16 border-t text-center">
+                {/* Important Dates Timeline */}
+                <section className="pt-16 border-t text-center">
                   <div className="flex flex-col items-center mb-8">
                     <Calendar size={40} className="text-primary mb-2" />
                     <h2 className="text-4xl font-bold text-foreground">
                       Important Dates
                     </h2>
+                    <p className="text-muted-foreground mt-2">
+                      Stay on track with our conference roadmap
+                    </p>
                   </div>
 
-                  <div className="space-y-6 max-w-3xl mx-auto">
-                    {dates.map((item, index) => (
-                      <Card
-                        key={index}
-                        className={`border-l-4 transition-all hover:shadow-lg ${
-                          item.highlight
-                            ? "border-l-primary bg-secondary"
-                            : "border-l-muted hover:border-l-primary"
-                        }`}
-                      >
-                        <CardContent className="p-6 text-center">
-                          <h3
-                            className={`text-2xl font-semibold mb-2 ${
+                  <div className="relative max-w-3xl mx-auto mt-10">
+                    <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary/60 via-primary/20 to-transparent"></div>
+
+                    <div className="space-y-10">
+                      {dates.map((item, index) => (
+                        <motion.div
+                          key={index}
+                          custom={index}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true, amount: 0.2 }}
+                          variants={dateVariants}
+                          className={`relative flex flex-col items-center ${
+                            index % 2 === 0
+                              ? "lg:flex-row"
+                              : "lg:flex-row-reverse"
+                          }`}
+                        >
+                          <div className="absolute left-1/2 transform -translate-x-1/2 bg-primary w-4 h-4 rounded-full border-4 border-background shadow-lg z-10"></div>
+
+                          <Card
+                            className={`lg:w-[45%] w-full ${
                               item.highlight
-                                ? "text-primary"
-                                : "text-foreground"
-                            }`}
+                                ? "bg-primary/10 border-primary shadow-lg"
+                                : "bg-background border-border hover:shadow-md"
+                            } mt-10 lg:mt-0`}
                           >
-                            {item.event}
-                          </h3>
-                          <div
-                            className={`${
-                              item.highlight
-                                ? "text-2xl font-bold text-primary"
-                                : "text-xl font-semibold text-foreground"
-                            }`}
-                          >
-                            {item.date}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
+                            <CardContent className="p-6 text-center">
+                              <h3
+                                className={`text-2xl font-semibold mb-2 ${
+                                  item.highlight
+                                    ? "text-primary"
+                                    : "text-foreground"
+                                }`}
+                              >
+                                {item.event}
+                              </h3>
+                              <p
+                                className={`text-lg ${
+                                  item.highlight
+                                    ? "font-bold text-primary"
+                                    : "text-muted-foreground"
+                                }`}
+                              >
+                                {item.date}
+                              </p>
+                            </CardContent>
+                          </Card>
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="mt-12 bg-secondary p-8 rounded-lg text-center">
-                    <h2 className="text-2xl font-bold text-foreground mb-4">
+                  <div className="mt-12 bg-secondary p-8 rounded-lg text-center shadow-md">
+                    <h2 className="text-2xl font-bold mb-4">
                       Time Zone Information
                     </h2>
                     <p className="text-muted-foreground mb-2">
@@ -245,21 +295,20 @@ const CallForPapers = () => {
                       UTC +5:30 | GMT +5:30
                     </p>
                   </div>
-                </div>
+                </section>
               </div>
 
               {/* Sidebar */}
               <div className="space-y-6">
-                <Card className="border-2 border-primary">
+                <Card className="border-2 border-primary shadow-md">
                   <CardHeader>
                     <CardTitle className="text-center text-xl">
                       Submit Your Paper
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm text-muted-foreground text-center">
-                      Submit your research paper through EasyChair submission
-                      system
+                  <CardContent className="space-y-4 text-center">
+                    <p className="text-sm text-muted-foreground">
+                      Submit your research paper through EasyChair
                     </p>
                     <Button className="w-full" size="lg">
                       <a href="#" target="_blank" rel="noopener noreferrer">
@@ -278,14 +327,14 @@ const CallForPapers = () => {
                   </CardContent>
                 </Card>
 
-                <Card>
+                <Card className="shadow-md">
                   <CardHeader>
                     <CardTitle className="text-xl text-center">
                       Need Help?
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground mb-4 text-center">
+                  <CardContent className="text-center">
+                    <p className="text-sm text-muted-foreground mb-4">
                       Have questions about paper submission? Contact our
                       technical program committee.
                     </p>
