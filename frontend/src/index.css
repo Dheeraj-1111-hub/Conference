@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* IEEE Professional Color Palette */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 18%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 18%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 18%;
+    
+    /* IEEE Blue - Primary Brand Color */
+    --primary: 201 100% 31%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Light Gray Background */
+    --secondary: 210 20% 98%;
+    --secondary-foreground: 0 0% 18%;
+    
+    --muted: 210 20% 96%;
+    --muted-foreground: 0 0% 45%;
+    
+    --accent: 201 100% 31%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 201 100% 31%;
+    
+    --radius: 0.5rem;
+    
+    /* IEEE Professional Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(201 100% 31%) 0%, hsl(201 80% 40%) 100%);
+    
+    /* Professional Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
