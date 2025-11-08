@@ -24,17 +24,17 @@ const Index = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <div className="inline-block bg-background/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <span className="text-sm font-medium">IEEE Madras Section Sponsored Conference</span>
+              <span className="text-sm font-medium">Conference Sponsored by Madras Section</span>
             </div>
-            
+
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              IEEE International Conference on Emerging Trends in Computing and Communication Technologies
+              International Conference on Emerging Trends in Computing and Communication Technologies
             </h1>
-            
+
             <div className="text-xl md:text-2xl font-semibold mb-4">
               ICETCCT 2025
             </div>
-            
+
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-lg mb-8">
               <div className="flex items-center gap-2">
                 <Calendar size={20} />
@@ -71,7 +71,7 @@ const Index = () => {
               Welcome to ICETCCT 2025
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              The IEEE International Conference on Emerging Trends in Computing and Communication Technologies 
+              The International Conference on Emerging Trends in Computing and Communication Technologies 
               (ICETCCT 2025) aims to bring together leading academic scientists, researchers, and scholars to 
               exchange and share their experiences and research results on all aspects of Computing and 
               Communication Technologies.
@@ -169,7 +169,7 @@ const Index = () => {
               [Your College Name]
             </p>
             <p className="text-lg text-muted-foreground">
-              In Association with IEEE Madras Section
+              In Association with Madras Section
             </p>
           </div>
         </div>
