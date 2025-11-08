@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FileText, CheckCircle, Calendar } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
@@ -55,7 +55,7 @@ const CallForPapers = () => {
     { event: "Conference Dates", date: "March 14–15, 2025", highlight: true },
   ];
 
-  const dateVariants = {
+  const dateVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: (i: number) => ({
       opacity: 1,
@@ -73,7 +73,7 @@ const CallForPapers = () => {
     <div className="min-h-screen flex flex-col text-[1.05rem] md:text-base">
       <Navigation />
 
-      <main className="flex-1">
+      <main className="flex-1 flex flex-col">
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-primary to-blue-500 text-white py-16">
           <div className="container mx-auto px-4 text-center">
@@ -90,11 +90,11 @@ const CallForPapers = () => {
         </section>
 
         {/* Main Content */}
-        <section className="py-16">
-          <div className="container mx-auto px-4 max-w-6xl leading-relaxed">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <section className="py-16 flex-1 flex flex-col">
+          <div className="container mx-auto px-4 max-w-6xl leading-relaxed flex-1 flex flex-col items-center">
+            <div className="w-full max-w-4xl flex flex-col items-center gap-8">
               {/* Left Section */}
-              <div className="lg:col-span-2 space-y-12">
+              <div className="w-full space-y-12">
                 {/* Scope and Topics */}
                 <div>
                   <h2 className="text-4xl font-bold text-center mb-4">
@@ -105,21 +105,39 @@ const CallForPapers = () => {
                     articles, and case studies on topics related to emerging
                     trends in Computing and Communication Technologies.
                   </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {topics.map((topic, index) => (
+                  <div className="grid grid-cols-1 gap-4 w-full">
+                    {Array.from({ length: 8 }).map((_, i) => (
                       <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.03, duration: 0.4 }}
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.03, duration: 0.4 }}
                         viewport={{ once: true }}
-                        className="flex items-start gap-2"
+                        className="flex flex-col md:flex-row items-start md:items-center justify-center md:justify-between gap-3 w-full"
                       >
-                        <CheckCircle
-                          size={22}
-                          className="text-primary mt-1 flex-shrink-0"
-                        />
-                        <span className="text-muted-foreground">{topic}</span>
+                        <div className="flex items-center gap-2 md:w-1/2 justify-center md:justify-start">
+                          <CheckCircle
+                            size={22}
+                            className="text-primary mt-1 flex-shrink-0"
+                          />
+                          <span className="text-muted-foreground">
+                            {topics[i]}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2 md:w-1/2 justify-center md:justify-start">
+                          {topics[i + 8] && (
+                            <>
+                              <CheckCircle
+                                size={22}
+                                className="text-primary mt-1 flex-shrink-0"
+                              />
+                              <span className="text-muted-foreground">
+                                {topics[i + 8]}
+                              </span>
+                            </>
+                          )}
+                        </div>
                       </motion.div>
                     ))}
                   </div>
@@ -127,21 +145,21 @@ const CallForPapers = () => {
 
                 {/* Submission Guidelines */}
                 <div>
-                  <h2 className="text-4xl font-bold text-center mb-4">
+                  <h2 className="text-3xl font-bold text-center mb-8">
                     Submission Guidelines
                   </h2>
 
-                  <div className="space-y-6 text-muted-foreground">
+                  <div className="text-left text-lg text-gray-700 space-y-6 leading-relaxed">
                     <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
-                      viewport={{ once: true }}
+                      className="max-w-5xl w-full mt-16"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1 }}
                     >
-                      <h3 className="text-2xl font-semibold text-foreground mb-2">
+                      <h3 className="text-xl font-semibold mb-2">
                         Paper Format
                       </h3>
-                      <ul className="list-disc list-inside space-y-2">
+                      <ul className="list-disc pl-8 space-y-2">
                         <li>Papers must be written in English</li>
                         <li>
                           Follow IEEE double-column format (US Letter size)
@@ -298,55 +316,46 @@ const CallForPapers = () => {
                 </section>
               </div>
 
-              {/* Sidebar */}
-              <div className="space-y-6">
-                <Card className="border-2 border-primary shadow-md">
-                  <CardHeader>
-                    <CardTitle className="text-center text-xl">
-                      Submit Your Paper
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-center">
-                    <p className="text-sm text-muted-foreground">
-                      Submit your research paper through EasyChair
-                    </p>
-                    <Button className="w-full" size="lg">
-                      <a href="#" target="_blank" rel="noopener noreferrer">
-                        Submit via EasyChair
-                      </a>
-                    </Button>
-                    <Button asChild variant="outline" className="w-full">
-                      <a
-                        href="https://www.ieee.org/conferences/publishing/templates.html"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Download IEEE Template
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                <Card className="shadow-md">
-                  <CardHeader>
-                    <CardTitle className="text-xl text-center">
-                      Need Help?
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Have questions about paper submission? Contact our
-                      technical program committee.
-                    </p>
-                    <Button asChild variant="outline" className="w-full">
-                      <Link to="/contact">Contact Us</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
+              {/* (Bottom boxes were moved to the bottom of the page to sit above the footer) */}
             </div>
           </div>
         </section>
+
+        {/* Bottom Boxes - placed at the bottom center above the footer */}
+        <motion.div
+          className="mt-auto mb-12 flex justify-center w-full"
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8 w-full max-w-5xl px-4">
+            {/* Submit Box */}
+            <div className="border border-blue-300 rounded-xl shadow-md p-8 text-center max-w-sm w-full">
+              <h3 className="text-2xl font-semibold mb-4">Submit Your Paper</h3>
+              <p className="text-gray-600 mb-4">
+                Submit your research paper through EasyChair
+              </p>
+              <button className="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2 px-6 rounded-md mb-3 w-full">
+                Submit via EasyChair
+              </button>
+              <button className="border border-gray-400 hover:bg-gray-100 text-gray-700 font-medium py-2 px-6 rounded-md w-full">
+                Download IEEE Template
+              </button>
+            </div>
+
+            {/* Contact Box */}
+            <div className="border border-gray-300 rounded-xl shadow-md p-8 text-center max-w-sm w-full">
+              <h3 className="text-2xl font-semibold mb-4">Need Help?</h3>
+              <p className="text-gray-600 mb-4">
+                Have questions about paper submission? Contact our technical
+                program committee.
+              </p>
+              <button className="border border-gray-400 hover:bg-gray-100 text-gray-700 font-medium py-2 px-6 rounded-md w-full">
+                Contact Us
+              </button>
+            </div>
+          </div>
+        </motion.div>
       </main>
 
       <Footer />
