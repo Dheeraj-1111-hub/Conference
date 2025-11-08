@@ -13,7 +13,7 @@ const Navigation = () => {
     { name: "Call for Papers", path: "/call-for-papers" },
     { name: "Speakers", path: "/speakers" },
     { name: "Committee", path: "/committee" },
-    { name: "Schedule", path: "/schedule" },
+    { name: "Schedule", path: "/Conference Details" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
