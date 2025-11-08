@@ -1,23 +1,19 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Call for Papers', path: '/call-for-papers' },
-    { name: 'Important Dates', path: '/dates' },
-    { name: 'Registration', path: '/registration' },
-    { name: 'Speakers', path: '/speakers' },
-    { name: 'Committee', path: '/committee' },
-    { name: 'Schedule', path: '/schedule' },
-    { name: 'Venue', path: '/venue' },
-    { name: 'Contact', path: '/contact' },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Call for Papers", path: "/call-for-papers" },
+    { name: "Speakers", path: "/speakers" },
+    { name: "Committee", path: "/committee" },
+    { name: "Schedule", path: "/schedule" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -32,8 +28,12 @@ const Navigation = () => {
               IEEE
             </div>
             <div className="hidden md:block">
-              <div className="text-sm font-semibold text-foreground">ICETCCT 2025</div>
-              <div className="text-xs text-muted-foreground">March 14-15, Chennai</div>
+              <div className="text-sm font-semibold text-foreground">
+                ICETCCT 2025
+              </div>
+              <div className="text-xs text-muted-foreground">
+                March 14-15, Chennai
+              </div>
             </div>
           </Link>
 
@@ -45,8 +45,8 @@ const Navigation = () => {
                 to={link.path}
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                   isActive(link.path)
-                    ? 'text-primary bg-secondary'
-                    : 'text-foreground hover:text-primary hover:bg-secondary'
+                    ? "text-primary bg-secondary"
+                    : "text-foreground hover:text-primary hover:bg-secondary"
                 }`}
               >
                 {link.name}
@@ -84,8 +84,8 @@ const Navigation = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                     isActive(link.path)
-                      ? 'text-primary bg-secondary'
-                      : 'text-foreground hover:text-primary hover:bg-secondary'
+                      ? "text-primary bg-secondary"
+                      : "text-foreground hover:text-primary hover:bg-secondary"
                   }`}
                 >
                   {link.name}
@@ -93,7 +93,10 @@ const Navigation = () => {
               ))}
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
                 <Button asChild variant="outline" size="sm">
-                  <Link to="/call-for-papers" onClick={() => setIsMenuOpen(false)}>
+                  <Link
+                    to="/call-for-papers"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
                     Submit Paper
                   </Link>
                 </Button>
