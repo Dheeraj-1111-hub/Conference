@@ -75,7 +75,7 @@ const CallForPapers = () => {
 
       <main className="flex-1 flex flex-col">
         {/* Hero Section */}
-        <section className="bg-gradient-hero text-white py-8">
+        <section className="bg-gradient-hero text-white py-14">
           <div className="container mx-auto px-4 text-center">
             <div className="flex flex-col items-center justify-center mb-4">
               
