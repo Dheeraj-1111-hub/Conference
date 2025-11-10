@@ -52,7 +52,7 @@ const Speakers = () => {
         <section className="bg-gradient-hero text-primary-foreground py-16">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Users size={48} />
+              
               <h1 className="text-4xl md:text-5xl font-bold">Keynote Speakers</h1>
             </div>
             <p className="text-xl text-center max-w-3xl mx-auto">
