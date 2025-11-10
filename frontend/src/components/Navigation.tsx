@@ -13,7 +13,7 @@ const Navigation = () => {
     { name: "Call for Papers", path: "/call-for-papers" },
     { name: "Speakers", path: "/speakers" },
     { name: "Committee", path: "/committee" },
-    { name: "Conference Details", path: "/Conference-details" },
+    { name: "Conference Details", path: "/schedule" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -24,12 +24,12 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-primary rounded flex items-center justify-center text-primary-foreground font-bold text-xl">
-              IEEE
+            <div className="w-14 h-14 bg-primary rounded flex items-center justify-center text-white font-extrabold text-sm leading-none">
+              <span className="block">ICISD</span>
             </div>
             <div className="hidden md:block">
               <div className="text-sm font-semibold text-foreground">
-                ICETCCT 2025
+                ICISD 2026
               </div>
               <div className="text-xs text-muted-foreground">
                 March 14-15, Chennai

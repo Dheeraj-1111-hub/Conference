@@ -1,7 +1,12 @@
-import { MapPin, Navigation as NavigationIcon, Hotel, Plane } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import {
+  MapPin,
+  Navigation as NavigationIcon,
+  Hotel,
+  Plane,
+} from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const Venue = () => {
   return (
@@ -17,7 +22,7 @@ const Venue = () => {
               <h1 className="text-4xl md:text-5xl font-bold">Venue</h1>
             </div>
             <p className="text-xl text-center max-w-3xl mx-auto">
-              Find Your Way to ICETCCT 2025
+              Find Your Way to ICISD 2026
             </p>
           </div>
         </section>
@@ -28,16 +33,22 @@ const Venue = () => {
             {/* Main Venue Card */}
             <Card className="mb-12 border-2 border-primary">
               <CardHeader>
-                <CardTitle className="text-center text-3xl">Conference Venue</CardTitle>
+                <CardTitle className="text-center text-3xl">
+                  Conference Venue
+                </CardTitle>
               </CardHeader>
               <CardContent className="text-center space-y-4">
-                <div className="text-xl font-semibold text-foreground">[Your College Name]</div>
+                <div className="text-xl font-semibold text-foreground">
+                  [Your College Name]
+                </div>
                 <div className="text-lg text-muted-foreground">
                   Department of Computer Science and Engineering
                 </div>
                 <div className="text-muted-foreground">
-                  [College Address Line 1]<br />
-                  [College Address Line 2]<br />
+                  [College Address Line 1]
+                  <br />
+                  [College Address Line 2]
+                  <br />
                   Chennai - [Pincode], Tamil Nadu, India
                 </div>
                 <div className="pt-4">
@@ -70,7 +81,8 @@ const Venue = () => {
                   ></iframe>
                 </div>
                 <p className="text-center text-sm text-muted-foreground mt-4">
-                  Click on the map to open in Google Maps for detailed directions
+                  Click on the map to open in Google Maps for detailed
+                  directions
                 </p>
               </CardContent>
             </Card>
@@ -86,12 +98,12 @@ const Venue = () => {
                 </CardHeader>
                 <CardContent className="text-muted-foreground text-sm">
                   <p className="mb-2">
-                    <strong>Chennai International Airport</strong> is the nearest airport,
-                    approximately 15-20 km from the venue.
+                    <strong>Chennai International Airport</strong> is the
+                    nearest airport, approximately 15-20 km from the venue.
                   </p>
                   <p>
-                    Travel time: 30-45 minutes by taxi/cab. Airport taxis, Ola, and Uber are
-                    readily available.
+                    Travel time: 30-45 minutes by taxi/cab. Airport taxis, Ola,
+                    and Uber are readily available.
                   </p>
                 </CardContent>
               </Card>
@@ -105,12 +117,13 @@ const Venue = () => {
                 </CardHeader>
                 <CardContent className="text-muted-foreground text-sm">
                   <p className="mb-2">
-                    <strong>Chennai Central</strong> and <strong>Chennai Egmore</strong> are the
-                    major railway stations.
+                    <strong>Chennai Central</strong> and{" "}
+                    <strong>Chennai Egmore</strong> are the major railway
+                    stations.
                   </p>
                   <p>
-                    Distance: 10-15 km from venue. Local taxis, metro, and buses are available for
-                    connecting to the venue.
+                    Distance: 10-15 km from venue. Local taxis, metro, and buses
+                    are available for connecting to the venue.
                   </p>
                 </CardContent>
               </Card>
@@ -123,10 +136,13 @@ const Venue = () => {
                   </div>
                 </CardHeader>
                 <CardContent className="text-muted-foreground text-sm">
-                  <p className="mb-2">Chennai Metro, city buses, and auto-rickshaws are readily available.</p>
+                  <p className="mb-2">
+                    Chennai Metro, city buses, and auto-rickshaws are readily
+                    available.
+                  </p>
                   <p>
-                    App-based cabs (Ola, Uber) are convenient options. Nearest metro station:
-                    [Station Name] (2 km).
+                    App-based cabs (Ola, Uber) are convenient options. Nearest
+                    metro station: [Station Name] (2 km).
                   </p>
                 </CardContent>
               </Card>
@@ -143,7 +159,9 @@ const Venue = () => {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-4">
-                    <h3 className="font-semibold text-foreground">Budget Hotels</h3>
+                    <h3 className="font-semibold text-foreground">
+                      Budget Hotels
+                    </h3>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li>• Hotel Name 1 - ₹1,500-2,000/night (2 km)</li>
                       <li>• Hotel Name 2 - ₹1,800-2,500/night (3 km)</li>
@@ -151,7 +169,9 @@ const Venue = () => {
                     </ul>
                   </div>
                   <div className="space-y-4">
-                    <h3 className="font-semibold text-foreground">Premium Hotels</h3>
+                    <h3 className="font-semibold text-foreground">
+                      Premium Hotels
+                    </h3>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                       <li>• Hotel Name 4 - ₹4,000-6,000/night (4 km)</li>
                       <li>• Hotel Name 5 - ₹5,000-7,500/night (5 km)</li>
@@ -161,8 +181,12 @@ const Venue = () => {
                 </div>
                 <div className="mt-6 p-4 bg-secondary rounded-lg text-center text-sm text-muted-foreground">
                   <p>
-                    For accommodation assistance and special conference rates, please contact us at{' '}
-                    <a href="mailto:ieeeconf2025@college.edu.in" className="text-primary hover:underline">
+                    For accommodation assistance and special conference rates,
+                    please contact us at{" "}
+                    <a
+                      href="mailto:ieeeconf2025@college.edu.in"
+                      className="text-primary hover:underline"
+                    >
                       ieeeconf2025@college.edu.in
                     </a>
                   </p>
@@ -176,24 +200,41 @@ const Venue = () => {
                 Explore Chennai
               </h3>
               <p className="text-muted-foreground text-center mb-6">
-                While you're in Chennai for the conference, don't miss these iconic attractions:
+                While you're in Chennai for the conference, don't miss these
+                iconic attractions:
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div>
-                  <div className="font-semibold text-foreground">Marina Beach</div>
-                  <div className="text-sm text-muted-foreground">World's 2nd longest beach</div>
+                  <div className="font-semibold text-foreground">
+                    Marina Beach
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    World's 2nd longest beach
+                  </div>
                 </div>
                 <div>
-                  <div className="font-semibold text-foreground">Kapaleeshwarar Temple</div>
-                  <div className="text-sm text-muted-foreground">Historic Dravidian architecture</div>
+                  <div className="font-semibold text-foreground">
+                    Kapaleeshwarar Temple
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Historic Dravidian architecture
+                  </div>
                 </div>
                 <div>
-                  <div className="font-semibold text-foreground">Fort St. George</div>
-                  <div className="text-sm text-muted-foreground">Colonial heritage site</div>
+                  <div className="font-semibold text-foreground">
+                    Fort St. George
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Colonial heritage site
+                  </div>
                 </div>
                 <div>
-                  <div className="font-semibold text-foreground">San Thome Church</div>
-                  <div className="text-sm text-muted-foreground">16th-century basilica</div>
+                  <div className="font-semibold text-foreground">
+                    San Thome Church
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    16th-century basilica
+                  </div>
                 </div>
               </div>
             </div>

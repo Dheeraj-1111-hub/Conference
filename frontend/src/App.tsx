@@ -8,6 +8,7 @@ import About from "./pages/About";
 import CallForPapers from "./pages/CallForPapers";
 import ImportantDates from "./pages/ImportantDates";
 import Registration from "./pages/Registration";
+import Auth from "./pages/Auth";
 import Speakers from "./pages/Speakers";
 import Committee from "./pages/Committee";
 import Schedule from "./pages/Schedule";
@@ -29,9 +30,10 @@ const App = () => (
           <Route path="/call-for-papers" element={<CallForPapers />} />
           <Route path="/dates" element={<ImportantDates />} />
           <Route path="/registration" element={<Registration />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/committee" element={<Committee />} />
-          <Route path="/Conference-details" element={<Schedule />} />
+          <Route path="/schedule" element={<Schedule />} />
           <Route path="/venue" element={<Venue />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

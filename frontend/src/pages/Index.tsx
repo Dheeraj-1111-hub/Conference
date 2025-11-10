@@ -118,7 +118,7 @@ const Index = () => {
                   Key deadlines and schedules
                 </p>
                 <Button asChild variant="outline" className="w-full">
-                  <Link to="/dates">View Dates</Link>
+                  <Link to="/call-for-papers#dates">View Dates</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -148,7 +148,7 @@ const Index = () => {
                   Explore Chennai, India
                 </p>
                 <Button asChild variant="outline" className="w-full">
-                  <Link to="/venue">Get Directions</Link>
+                  <Link to="/schedule#venue">Get Directions</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -196,7 +196,8 @@ const Index = () => {
               Department of Computer Science and Engineering
             </p>
             <p className="text-xl font-semibold text-foreground mb-4">
-              SRM Institute of Science and Technology, Vadapalani , Chennai, India
+              SRM Institute of Science and Technology, Vadapalani , Chennai,
+              India
             </p>
             <p className="text-lg text-muted-foreground">
               In collaboration with Degruter Publishing

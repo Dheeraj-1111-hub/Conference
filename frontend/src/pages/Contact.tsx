@@ -1,43 +1,43 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
-        title: 'Error',
-        description: 'Please fill in all required fields.',
-        variant: 'destructive',
+        title: "Error",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
       });
       return;
     }
 
     // Here you would typically send the form data to a backend
     toast({
-      title: 'Message Sent!',
-      description: 'Thank you for contacting us. We will get back to you soon.',
+      title: "Message Sent!",
+      description: "Thank you for contacting us. We will get back to you soon.",
     });
 
     // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
@@ -53,7 +53,7 @@ const Contact = () => {
               <h1 className="text-4xl md:text-5xl font-bold">Contact Us</h1>
             </div>
             <p className="text-xl text-center max-w-3xl mx-auto">
-              Get in Touch with the ICETCCT 2025 Team
+              Get in Touch with the ICISD 2026 Team
             </p>
           </div>
         </section>
@@ -70,7 +70,10 @@ const Contact = () => {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <MapPin size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <MapPin
+                        size={20}
+                        className="text-primary mt-1 flex-shrink-0"
+                      />
                       <div className="text-sm text-muted-foreground">
                         <p>Department of CSE</p>
                         <p>[Your College Name]</p>
@@ -79,7 +82,10 @@ const Contact = () => {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <Mail size={20} className="text-primary mt-1 flex-shrink-0" />
+                      <Mail
+                        size={20}
+                        className="text-primary mt-1 flex-shrink-0"
+                      />
                       <a
                         href="mailto:ieeeconf2025@college.edu.in"
                         className="text-sm text-primary hover:underline"
@@ -96,21 +102,35 @@ const Contact = () => {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div>
-                      <p className="font-semibold text-foreground">Dr. [Name]</p>
-                      <p className="text-sm text-muted-foreground mb-1">Conference Chair</p>
+                      <p className="font-semibold text-foreground">
+                        Dr. [Name]
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-1">
+                        Conference Chair
+                      </p>
                       <div className="flex items-center gap-2 text-sm">
                         <Phone size={16} className="text-primary" />
-                        <a href="tel:+919876543210" className="text-primary hover:underline">
+                        <a
+                          href="tel:+919876543210"
+                          className="text-primary hover:underline"
+                        >
                           +91 98765 43210
                         </a>
                       </div>
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground">Prof. [Name]</p>
-                      <p className="text-sm text-muted-foreground mb-1">Program Chair</p>
+                      <p className="font-semibold text-foreground">
+                        Prof. [Name]
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-1">
+                        Program Chair
+                      </p>
                       <div className="flex items-center gap-2 text-sm">
                         <Phone size={16} className="text-primary" />
-                        <a href="tel:+919876543211" className="text-primary hover:underline">
+                        <a
+                          href="tel:+919876543211"
+                          className="text-primary hover:underline"
+                        >
                           +91 98765 43211
                         </a>
                       </div>
@@ -130,10 +150,10 @@ const Contact = () => {
                       Registration Portal
                     </a>
                     <a href="#" className="block text-primary hover:underline">
-                      IEEE Author Guidelines
+                      Author Guidelines
                     </a>
                     <a href="#" className="block text-primary hover:underline">
-                      IEEE Madras Section
+                      Madras Section
                     </a>
                   </CardContent>
                 </Card>
@@ -143,25 +163,35 @@ const Contact = () => {
               <div className="lg:col-span-2">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-2xl">Send Us a Message</CardTitle>
+                    <CardTitle className="text-2xl">
+                      Send Us a Message
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label htmlFor="name" className="block text-sm font-medium mb-2">
+                          <label
+                            htmlFor="name"
+                            className="block text-sm font-medium mb-2"
+                          >
                             Full Name *
                           </label>
                           <Input
                             id="name"
                             placeholder="Your name"
                             value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                            onChange={(e) =>
+                              setFormData({ ...formData, name: e.target.value })
+                            }
                             required
                           />
                         </div>
                         <div>
-                          <label htmlFor="email" className="block text-sm font-medium mb-2">
+                          <label
+                            htmlFor="email"
+                            className="block text-sm font-medium mb-2"
+                          >
                             Email Address *
                           </label>
                           <Input
@@ -169,26 +199,42 @@ const Contact = () => {
                             type="email"
                             placeholder="your.email@example.com"
                             value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                email: e.target.value,
+                              })
+                            }
                             required
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                        <label
+                          htmlFor="subject"
+                          className="block text-sm font-medium mb-2"
+                        >
                           Subject
                         </label>
                         <Input
                           id="subject"
                           placeholder="What is this regarding?"
                           value={formData.subject}
-                          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              subject: e.target.value,
+                            })
+                          }
                         />
                       </div>
 
                       <div>
-                        <label htmlFor="message" className="block text-sm font-medium mb-2">
+                        <label
+                          htmlFor="message"
+                          className="block text-sm font-medium mb-2"
+                        >
                           Message *
                         </label>
                         <Textarea
@@ -196,12 +242,21 @@ const Contact = () => {
                           placeholder="Your message here..."
                           rows={6}
                           value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              message: e.target.value,
+                            })
+                          }
                           required
                         />
                       </div>
 
-                      <Button type="submit" size="lg" className="w-full md:w-auto">
+                      <Button
+                        type="submit"
+                        size="lg"
+                        className="w-full md:w-auto"
+                      >
                         <Send size={18} className="mr-2" />
                         Send Message
                       </Button>
@@ -220,8 +275,9 @@ const Contact = () => {
                         How do I submit my paper?
                       </h3>
                       <p className="text-sm text-muted-foreground">
-                        Papers should be submitted through the EasyChair submission portal. Visit the
-                        Call for Papers page for detailed guidelines.
+                        Papers should be submitted through the EasyChair
+                        submission portal. Visit the Call for Papers page for
+                        detailed guidelines.
                       </p>
                     </div>
                     <div>
@@ -229,8 +285,9 @@ const Contact = () => {
                         What is the registration fee?
                       </h3>
                       <p className="text-sm text-muted-foreground">
-                        Registration fees vary based on IEEE membership status and category. Please
-                        check the Registration page for complete details.
+                        Registration fees vary based on membership status and
+                        category. Please check the Registration page for
+                        complete details.
                       </p>
                     </div>
                     <div>
@@ -238,8 +295,8 @@ const Contact = () => {
                         Will accepted papers be published?
                       </h3>
                       <p className="text-sm text-muted-foreground">
-                        Yes, all accepted and presented papers will be published in IEEE Xplore Digital
-                        Library.
+                        Yes, all accepted and presented papers will be published
+                        in Xplore Digital Library.
                       </p>
                     </div>
                     <div>
@@ -247,8 +304,8 @@ const Contact = () => {
                         Can I attend without presenting a paper?
                       </h3>
                       <p className="text-sm text-muted-foreground">
-                        Yes, you can register as a participant to attend keynotes and technical
-                        sessions without presenting.
+                        Yes, you can register as a participant to attend
+                        keynotes and technical sessions without presenting.
                       </p>
                     </div>
                   </CardContent>
