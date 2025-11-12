@@ -77,14 +77,14 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">Contact Information</h3>
             <ul className="space-y-2 text-sm text-background/80">
               <li>Department of CSE</li>
-              <li>[Your College Name]</li>
+              <li>SRM INSTITUTE OF SCIENCE AND TECHNOLOGY, VADAPLANI</li>
               <li>Chennai, Tamil Nadu, India</li>
               <li className="pt-2">
                 <a
                   href="mailto:ieeeconf2025@college.edu.in"
                   className="hover:text-primary transition-colors"
                 >
-                  ieeeconf2025@college.edu.in
+                  icisd@srmist.edu.in
                 </a>
               </li>
             </ul>
