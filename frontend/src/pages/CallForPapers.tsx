@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { FileText, CheckCircle, Calendar } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -27,31 +28,11 @@ const CallForPapers = () => {
   ];
 
   const dates = [
-    {
-      event: "Paper Submission Deadline",
-      date: "May 30, 2025",
-      highlight: false,
-    },
-    {
-      event: "Notification of Acceptance",
-      date: "July 15, 2025",
-      highlight: false,
-    },
-    {
-      event: "Camera-Ready Paper Submission",
-      date: "August 10, 2025",
-      highlight: false,
-    },
-    {
-      event: "Early Bird Registration Deadline",
-      date: "August 20, 2025",
-      highlight: false,
-    },
-    {
-      event: "Final Registration Deadline",
-      date: "September 1, 2025",
-      highlight: false,
-    },
+    { event: "Paper Submission Deadline", date: "May 30, 2025", highlight: false },
+    { event: "Notification of Acceptance", date: "July 15, 2025", highlight: false },
+    { event: "Camera-Ready Paper Submission", date: "August 10, 2025", highlight: false },
+    { event: "Early Bird Registration Deadline", date: "August 20, 2025", highlight: false },
+    { event: "Final Registration Deadline", date: "September 1, 2025", highlight: false },
     { event: "Conference Dates", date: "October 10–11, 2025", highlight: true },
   ];
 
@@ -60,12 +41,7 @@ const CallForPapers = () => {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        delay: i * 0.15,
-        duration: 0.6,
-        type: "spring",
-        stiffness: 70,
-      },
+      transition: { delay: i * 0.15, duration: 0.6, type: "spring", stiffness: 70 },
     }),
   };
 
@@ -77,11 +53,7 @@ const CallForPapers = () => {
         {/* Hero Section */}
         <section className="bg-gradient-hero text-white py-14">
           <div className="container mx-auto px-4 text-center">
-            <div className="flex flex-col items-center justify-center mb-4">
-              <h1 className="text-5xl md:text-6xl font-bold mt-2">
-                Call for Papers
-              </h1>
-            </div>
+            <h1 className="text-5xl md:text-6xl font-bold mb-3">Call for Papers</h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto">
               Submit Your Original Research to ICISD’26
             </p>
@@ -92,11 +64,10 @@ const CallForPapers = () => {
         <section className="py-20 flex-1 flex flex-col">
           <div className="container mx-auto px-6 max-w-7xl leading-relaxed flex-1 flex flex-col items-center">
             <div className="w-full max-w-5xl flex flex-col items-center gap-16">
+
               {/* Scope and Topics */}
               <div className="relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-px after:w-32 after:bg-primary/30 pb-16">
-                <h2 className="text-4xl font-bold text-center mb-6">
-                  Scope and Topics
-                </h2>
+                <h2 className="text-4xl font-bold text-center mb-6">Scope and Topics</h2>
                 <p className="text-muted-foreground mb-12 text-center max-w-3xl mx-auto">
                   ICISD’26 invites high-quality original research papers, review
                   articles, and case studies that address recent developments,
@@ -115,25 +86,15 @@ const CallForPapers = () => {
                       className="flex flex-col md:flex-row items-start md:items-center justify-start gap-3 w-full pt-5 first:pt-0"
                     >
                       <div className="flex items-center gap-3 md:w-1/2 justify-center md:justify-start pl-4">
-                        <CheckCircle
-                          size={20}
-                          className="text-primary flex-shrink-0"
-                        />
-                        <span className="text-gray-600 font-medium">
-                          {topics[i]}
-                        </span>
+                        <CheckCircle size={20} className="text-primary flex-shrink-0" />
+                        <span className="text-gray-600 font-medium">{topics[i]}</span>
                       </div>
 
                       <div className="flex items-center gap-3 md:w-1/2 justify-center md:justify-start pl-4 md:pl-16">
                         {topics[i + 8] && (
                           <>
-                            <CheckCircle
-                              size={20}
-                              className="text-primary flex-shrink-0"
-                            />
-                            <span className="text-gray-600 font-medium">
-                              {topics[i + 8]}
-                            </span>
+                            <CheckCircle size={20} className="text-primary flex-shrink-0" />
+                            <span className="text-gray-600 font-medium">{topics[i + 8]}</span>
                           </>
                         )}
                       </div>
@@ -144,12 +105,8 @@ const CallForPapers = () => {
 
               {/* Submission Guidelines */}
               <div className="relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-px after:w-32 after:bg-primary/30 pb-16">
-                <h2 className="text-3xl font-bold text-center mb-12">
-                  Submission Guidelines
-                </h2>
-
+                <h2 className="text-3xl font-bold text-center mb-12">Submission Guidelines</h2>
                 <div className="text-left text-lg text-gray-700 space-y-12 leading-relaxed max-w-4xl mx-auto">
-                  {/* Paper Format */}
                   <motion.div
                     className="w-full bg-gradient-to-r from-blue-50/50 to-transparent p-8 rounded-lg border-l-4 border-primary/30"
                     initial={{ opacity: 0, y: 40 }}
@@ -161,51 +118,17 @@ const CallForPapers = () => {
                         <FileText size={24} className="text-primary" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-semibold mb-4 text-gray-800">
-                          Paper Format
-                        </h3>
+                        <h3 className="text-2xl font-semibold mb-4 text-gray-800">Paper Format</h3>
                         <ul className="list-none space-y-3 text-gray-600">
-                          <li className="flex items-center gap-2">
-                            <CheckCircle
-                              size={16}
-                              className="text-primary/70"
-                            />
-                            <span>Papers must be written in English.</span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <CheckCircle
-                              size={16}
-                              className="text-primary/70"
-                            />
-                            <span>
-                              Follow Degruter publication format guidelines.
-                            </span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <CheckCircle
-                              size={16}
-                              className="text-primary/70"
-                            />
-                            <span>
-                              Maximum length: 6 pages (including references).
-                            </span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <CheckCircle
-                              size={16}
-                              className="text-primary/70"
-                            />
-                            <span>
-                              All papers must be original and not under review
-                              elsewhere.
-                            </span>
-                          </li>
+                          <li><CheckCircle size={16} className="text-primary/70" /> Papers must be written in English.</li>
+                          <li><CheckCircle size={16} className="text-primary/70" /> Follow Degruter publication format guidelines.</li>
+                          <li><CheckCircle size={16} className="text-primary/70" /> Maximum length: 6 pages (including references).</li>
+                          <li><CheckCircle size={16} className="text-primary/70" /> All papers must be original and not under review elsewhere.</li>
                         </ul>
                       </div>
                     </div>
                   </motion.div>
 
-                  {/* Review Process */}
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -218,46 +141,16 @@ const CallForPapers = () => {
                         <CheckCircle size={24} className="text-primary" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-                          Review Process
-                        </h3>
+                        <h3 className="text-2xl font-semibold text-gray-800 mb-4">Review Process</h3>
                         <ul className="list-none space-y-3 text-gray-600">
-                          <li className="flex items-center gap-2">
-                            <CheckCircle
-                              size={16}
-                              className="text-primary/70"
-                            />
-                            <span>
-                              All submissions will undergo a double-blind peer
-                              review.
-                            </span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <CheckCircle
-                              size={16}
-                              className="text-primary/70"
-                            />
-                            <span>
-                              Each paper will be evaluated for originality and
-                              relevance.
-                            </span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <CheckCircle
-                              size={16}
-                              className="text-primary/70"
-                            />
-                            <span>
-                              Accepted papers must be presented at the
-                              conference.
-                            </span>
-                          </li>
+                          <li><CheckCircle size={16} className="text-primary/70" /> Double-blind peer review process.</li>
+                          <li><CheckCircle size={16} className="text-primary/70" /> Evaluated for originality and relevance.</li>
+                          <li><CheckCircle size={16} className="text-primary/70" /> Accepted papers must be presented at the conference.</li>
                         </ul>
                       </div>
                     </div>
                   </motion.div>
 
-                  {/* Publication */}
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -267,36 +160,13 @@ const CallForPapers = () => {
                   >
                     <div className="flex items-start gap-4">
                       <div className="bg-primary/10 p-2 rounded-lg">
-                        <FileText
-                          size={24}
-                          className="text-primary rotate-12 transform"
-                        />
+                        <FileText size={24} className="text-primary rotate-12 transform" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-                          Publication
-                        </h3>
+                        <h3 className="text-2xl font-semibold text-gray-800 mb-4">Publication</h3>
                         <ul className="list-none space-y-3 text-gray-600">
-                          <li className="flex items-center gap-2">
-                            <CheckCircle
-                              size={16}
-                              className="text-primary/70"
-                            />
-                            <span>
-                              Accepted and presented papers will be published in{" "}
-                              <strong>Degruter Digital Library</strong>.
-                            </span>
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <CheckCircle
-                              size={16}
-                              className="text-primary/70"
-                            />
-                            <span>
-                              Selected papers will be invited for extended
-                              publication in indexed journals.
-                            </span>
-                          </li>
+                          <li><CheckCircle size={16} className="text-primary/70" /> Accepted and presented papers will appear in <strong>Degruter Digital Library</strong>.</li>
+                          <li><CheckCircle size={16} className="text-primary/70" /> Selected papers may be extended for indexed journals.</li>
                         </ul>
                       </div>
                     </div>
@@ -312,14 +182,10 @@ const CallForPapers = () => {
                 viewport={{ once: true }}
                 className="bg-blue-50/50 p-8 rounded-xl text-center shadow-sm border border-blue-100"
               >
-                <h3 className="text-2xl font-semibold mb-3">
-                  Plagiarism Policy
-                </h3>
+                <h3 className="text-2xl font-semibold mb-3">Plagiarism Policy</h3>
                 <p className="text-muted-foreground">
-                  All submitted manuscripts will be checked for plagiarism using
-                  standard tools. Papers showing significant overlap with
-                  existing work will be rejected in accordance with Degruter’s
-                  ethical publication standards.
+                  All submitted manuscripts will be checked for plagiarism using standard tools. 
+                  Papers showing overlap with existing work will be rejected according to Degruter’s publication ethics.
                 </p>
               </motion.div>
 
@@ -327,9 +193,7 @@ const CallForPapers = () => {
               <section id="dates" className="pt-16 border-t text-center">
                 <div className="flex flex-col items-center mb-8">
                   <Calendar size={40} className="text-primary mb-2" />
-                  <h2 className="text-4xl font-bold text-foreground">
-                    Important Dates
-                  </h2>
+                  <h2 className="text-4xl font-bold text-foreground">Important Dates</h2>
                   <p className="text-muted-foreground mt-2">
                     Keep track of the ICISD’26 submission schedule
                   </p>
@@ -348,13 +212,10 @@ const CallForPapers = () => {
                         viewport={{ once: true, amount: 0.2 }}
                         variants={dateVariants}
                         className={`relative flex flex-col items-center ${
-                          index % 2 === 0
-                            ? "lg:flex-row"
-                            : "lg:flex-row-reverse"
+                          index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
                         }`}
                       >
                         <div className="absolute left-1/2 transform -translate-x-1/2 bg-primary w-4 h-4 rounded-full border-4 border-background shadow-lg z-10"></div>
-
                         <Card
                           className={`lg:w-[45%] w-full ${
                             item.highlight
@@ -363,22 +224,10 @@ const CallForPapers = () => {
                           } mt-10 lg:mt-0`}
                         >
                           <CardContent className="p-6 text-center">
-                            <h3
-                              className={`text-2xl font-semibold mb-2 ${
-                                item.highlight
-                                  ? "text-primary"
-                                  : "text-foreground"
-                              }`}
-                            >
+                            <h3 className={`text-2xl font-semibold mb-2 ${item.highlight ? "text-primary" : "text-foreground"}`}>
                               {item.event}
                             </h3>
-                            <p
-                              className={`text-lg ${
-                                item.highlight
-                                  ? "font-bold text-primary"
-                                  : "text-muted-foreground"
-                              }`}
-                            >
+                            <p className={`text-lg ${item.highlight ? "font-bold text-primary" : "text-muted-foreground"}`}>
                               {item.date}
                             </p>
                           </CardContent>
@@ -386,18 +235,6 @@ const CallForPapers = () => {
                       </motion.div>
                     ))}
                   </div>
-                </div>
-
-                <div className="mt-12 bg-secondary p-8 rounded-lg text-center shadow-md">
-                  <h2 className="text-2xl font-bold mb-4">
-                    Time Zone Information
-                  </h2>
-                  <p className="text-muted-foreground mb-2">
-                    All deadlines are 11:59 PM IST (Indian Standard Time)
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    UTC +5:30 | GMT +5:30
-                  </p>
                 </div>
               </section>
             </div>
@@ -419,12 +256,30 @@ const CallForPapers = () => {
                 Submit your manuscript through the official submission portal.
               </p>
               <div className="mt-auto space-y-3">
-                <button className="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2 px-6 rounded-md mb-3 w-full">
-                  Submit via EasyChair
-                </button>
-                <button className="border border-gray-400 hover:bg-gray-100 text-gray-700 font-medium py-2 px-6 rounded-md w-full">
+                <SignedIn>
+                  <Link
+                    to="/submit-paper"
+                    className="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2 px-6 rounded-md mb-3 block text-center"
+                  >
+                    Submit Paper
+                  </Link>
+                </SignedIn>
+
+                <SignedOut>
+                  <Link
+                    to="/auth"
+                    className="bg-blue-700 hover:bg-blue-800 text-white font-medium py-2 px-6 rounded-md mb-3 block text-center"
+                  >
+                    Sign in to Submit
+                  </Link>
+                </SignedOut>
+
+                <a
+                  href="/assets/Degruter_Template.docx"
+                  className="border border-gray-400 hover:bg-gray-100 text-gray-700 font-medium py-2 px-6 rounded-md block text-center"
+                >
                   Download Degruter Template
-                </button>
+                </a>
               </div>
             </div>
 
@@ -432,13 +287,15 @@ const CallForPapers = () => {
             <div className="border border-gray-200 bg-white rounded-xl shadow-md p-8 text-center max-w-sm w-full flex flex-col">
               <h3 className="text-2xl font-semibold mb-4">Need Help?</h3>
               <p className="text-gray-600 mb-4">
-                Have questions about the paper submission process? Reach out to
-                our Technical Program Committee.
+                Have questions about the submission process? Contact our Technical Committee.
               </p>
               <div className="mt-auto">
-                <button className="border border-gray-400 hover:bg-gray-100 text-gray-700 font-medium py-2 px-6 rounded-md w-full">
+                <Link
+                  to="/contact"
+                  className="border border-gray-400 hover:bg-gray-100 text-gray-700 font-medium py-2 px-6 rounded-md block text-center"
+                >
                   Contact Us
-                </button>
+                </Link>
               </div>
             </div>
           </div>

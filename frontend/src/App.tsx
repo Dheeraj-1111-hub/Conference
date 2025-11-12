@@ -15,6 +15,10 @@ import Schedule from "./pages/Schedule";
 import Venue from "./pages/Venue";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { SignedIn, SignedOut, RedirectToSignIn, UserProfile } from "@clerk/clerk-react";
+import SubmitPaper from "./pages/SubmitPaper";
+import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
 
 const queryClient = new QueryClient();
 
@@ -23,22 +27,26 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/call-for-papers" element={<CallForPapers />} />
           <Route path="/dates" element={<ImportantDates />} />
           <Route path="/registration" element={<Registration />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/auth/*" element={<Auth />} />
           <Route path="/speakers" element={<Speakers />} />
           <Route path="/committee" element={<Committee />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/venue" element={<Venue />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/submit-paper" element={<SubmitPaper />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile/*" element={<UserProfile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
+      
     </TooltipProvider>
   </QueryClientProvider>
 );

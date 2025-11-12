@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/clerk-react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { user } = useUser();
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -16,7 +19,7 @@ const Navigation = () => {
     { name: "Conference Details", path: "/schedule" },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path) => location.pathname === path;
 
   return (
     <nav className="sticky top-0 z-50 bg-background border-b border-border shadow-sm">
@@ -32,7 +35,7 @@ const Navigation = () => {
                 ICISD 2026
               </div>
               <div className="text-xs text-muted-foreground">
-                March 14-15, Chennai
+                March 14–15, Chennai
               </div>
             </div>
           </Link>
@@ -54,14 +57,51 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-2">
-            <Button asChild variant="outline" size="sm">
-              <Link to="/call-for-papers">Submit Paper</Link>
-            </Button>
-            <Button asChild size="sm">
-              <Link to="/registration">Register Now</Link>
-            </Button>
+          {/* Right Section — Auth or User */}
+          <div className="hidden lg:flex items-center space-x-4">
+            <SignedOut>
+              <Button asChild variant="outline" size="sm">
+                <Link to="/auth">Sign In</Link>
+              </Button>
+              <Button asChild size="sm">
+                <Link to="/auth">Register</Link>
+              </Button>
+            </SignedOut>
+
+            <SignedIn>
+              <div className="flex items-center space-x-2">
+                {user?.firstName && (
+                  <span className="text-sm font-medium text-muted-foreground">
+                    Hi, {user.firstName}
+                  </span>
+                )}
+                <UserButton
+                  afterSignOutUrl="/"
+                  userProfileMode="navigation"
+                  userProfileUrl="/profile"
+                  appearance={{
+                    elements: {
+                      avatarBox: "w-8 h-8",
+                      userButtonPopoverCard:
+                        "rounded-lg shadow-lg border border-border bg-white/95",
+                      userButtonPopoverActionButton:
+                        "text-sm hover:bg-secondary rounded-md transition-colors",
+                    },
+                    variables: {
+                      colorPrimary: "#f97316",
+                    },
+                  }}
+                  userProfileProps={{
+                    additionalMenuItems: [
+                      {
+                        label: "My Dashboard",
+                        onClick: () => navigate("/dashboard"),
+                      },
+                    ],
+                  }}
+                />
+              </div>
+            </SignedIn>
           </div>
 
           {/* Mobile Menu Button */}
@@ -91,20 +131,59 @@ const Navigation = () => {
                   {link.name}
                 </Link>
               ))}
+
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-                <Button asChild variant="outline" size="sm">
-                  <Link
-                    to="/call-for-papers"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Submit Paper
-                  </Link>
-                </Button>
-                <Button asChild size="sm">
-                  <Link to="/registration" onClick={() => setIsMenuOpen(false)}>
-                    Register Now
-                  </Link>
-                </Button>
+                <SignedOut>
+                  <Button asChild variant="outline" size="sm">
+                    <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                      Sign In
+                    </Link>
+                  </Button>
+                  <Button asChild size="sm">
+                    <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                      Register
+                    </Link>
+                  </Button>
+                </SignedOut>
+
+                <SignedIn>
+                  <div className="flex items-center justify-between px-3 py-2">
+                    <div className="text-sm">
+                      <div className="font-semibold">
+                        {user?.fullName || "Conference Attendee"}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {user?.primaryEmailAddress?.emailAddress}
+                      </div>
+                    </div>
+                    <UserButton
+                      afterSignOutUrl="/"
+                      userProfileMode="navigation"
+                      userProfileUrl="/profile"
+                      appearance={{
+                        elements: {
+                          avatarBox: "w-8 h-8",
+                          userButtonPopoverCard:
+                            "rounded-lg shadow-lg border border-border",
+                        },
+                        variables: {
+                          colorPrimary: "#f97316",
+                        },
+                      }}
+                      userProfileProps={{
+                        additionalMenuItems: [
+                          {
+                            label: "My Dashboard",
+                            onClick: () => {
+                              setIsMenuOpen(false);
+                              navigate("/dashboard");
+                            },
+                          },
+                        ],
+                      }}
+                    />
+                  </div>
+                </SignedIn>
               </div>
             </div>
           </div>
