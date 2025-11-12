@@ -122,7 +122,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-background/20 pt-8 text-center text-sm text-background/70">
           <p className="mb-2">
-            © {currentYear} ICISD 2026 | Organized by [Your College Name],
+            © {currentYear} ICISD 2026 | Organized by SRM Institute of Science and Technology, Vadapalani,
             Chennai, India
           </p>
           <p className="text-xs">Powered by Madras Section</p>
